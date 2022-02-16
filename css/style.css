@@ -747,17 +747,13 @@ border-radius: 10px;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
    }
+}
+@media (max-width:767px) {
    .advances__body{ 
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
    }
-   body{
-      font-size: 6px !important;
-      line-height: 1!important;
-   }
-}
-@media (max-width:767px) {
    .header__burger{
       position: relative;
       display: block;
