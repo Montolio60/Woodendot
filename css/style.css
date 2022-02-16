@@ -396,7 +396,7 @@ text-decoration: none;
    height: 100%;
 }
 footer{
-   
+   overflow-x: hidden;
    padding: 56px 0 60px 0;
    background-color: #E9E9E9;
 }
