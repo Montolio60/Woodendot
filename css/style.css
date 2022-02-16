@@ -870,4 +870,13 @@ border-radius: 10px;
    .footer__top{
       flex-direction: column;
    }
+   .specific-item{
+      padding: 15px 5px;
+   }
+   .specific-item:first-child, .specific-item:nth-child(4) {
+      background-color: #fff;
+  }
+  .specific-item:nth-child(2),.specific-item:nth-child(3){
+     background: none;
+  }
 }
