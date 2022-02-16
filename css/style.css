@@ -879,4 +879,17 @@ border-radius: 10px;
   .specific-item:nth-child(2),.specific-item:nth-child(3){
      background: none;
   }
+  .product__wrapper{
+     grid-template-columns: 1fr;
+     grid-template-rows: 1fr 1fr;
+  }
+  .product__text{
+     order: 2;
+  }
+  .product__img{
+     order: 1;
+  }
+  .block-product__wrapper{
+     padding-top: 20px;
+  }
 }
