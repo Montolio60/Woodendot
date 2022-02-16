@@ -861,4 +861,13 @@ border-radius: 10px;
       padding-left: 20px;
       padding-right: 20px;
    }
+   .footer__bottom{
+      padding: 0;
+   }
+   .footer__payment-systems{
+      display: none;
+   }
+   .footer__top{
+      flex-direction: column;
+   }
 }
