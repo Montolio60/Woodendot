@@ -725,6 +725,11 @@ border-radius: 10px;
 .header__burger{
    display: none;
 }
+.block-product__wrapper:nth-child(even){
+
+
+}
+
 
 
 @media (max-width: 992px) {
@@ -858,8 +863,7 @@ border-radius: 10px;
       flex-direction: column;
    }
    footer{
-      padding-left: 20px;
-      padding-right: 20px;
+      padding: 20px 20px 10px 20px;
    }
    .footer__bottom{
       padding: 0;
@@ -891,5 +895,20 @@ border-radius: 10px;
   }
   .block-product__wrapper{
      padding-top: 20px;
+  }
+  .slider-picture{
+     padding-bottom: 0;
+  }
+  .quotes{
+     margin-bottom: 30px;
+  }
+  .partners{
+     padding: 10px 0 20px 0;
+  }
+  .advances__body{
+     padding: 0;
+  }
+  .advances__body li{
+     justify-content: center;
   }
 }
