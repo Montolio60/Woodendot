@@ -10,7 +10,7 @@
    <link rel="stylesheet" href="css/style.css">
    <script defer src="js/script.js"></script>
 
-   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <link   rel="stylesheet"   href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
    <script  src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
@@ -253,11 +253,11 @@
    <footer>
       <div class="footer__wrapper">
          <div class="footer__top">
-            <div class="footer__left-block">
+            <div class="footer__left-block one">
                <div class="footer__block-link block-link">
                   <h2>About</h2>
                   <ul class="block-link__list-link">
-                     <li><a href="#">hAbout Us</a></li>
+                     <li><a href="#">About Us</a></li>
                      <li><a href="#">Design</a></li>
                      <li><a href="#">Sustainability</a></li>
                      <li><a href="#">We plant trees</a></li>
@@ -310,7 +310,17 @@
          </div>
       </div>
    </footer>
-
+<script>
+   $(document).ready(function(){
+      $(".block-link h2").click(function (event) {
+         if($(".footer__left-block").hasClass("one")){
+            $(".block-link h2").not($(this)).removeClass("active");
+            $(".block-link__list-link").not($(this).next()).slideUp(300);
+         }
+         $(this).toggleClass('active').next().slideToggle(300);
+      })
+   });
+</script>
 
 
    <script>
