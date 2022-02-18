@@ -626,11 +626,10 @@ display: block;
 .popup-cart{
    opacity: 0;
    visibility: hidden;
-   top: 0;
+   top: 80px;
    right: 5px;
-   transform: translate(0, 50%);
    position: absolute;
-   width: 500px;
+   min-width: 300px;
    padding: 10px;
    box-shadow: 0 0 10px rgba(0,0,0,0.5);
    border-radius: 4px;
@@ -639,13 +638,14 @@ display: block;
    overflow-y: auto;
    overflow-x: hidden;
 }
-.popup-cart:target{
+
+.popup-cart.open{
    opacity: 1;
    visibility: visible;
 }
 .popup-cart__body{
    position: relative;
-   padding-top: 50px;
+  
 }
 .popup-cart__close{
    position: absolute;

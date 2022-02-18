@@ -8,11 +8,13 @@
    <title>Woodendot</title>
 
    <link rel="stylesheet" href="css/style.css">
+
+   <script defer src="js/goods.js"></script>
    <script defer src="js/script.js"></script>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <link   rel="stylesheet"   href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
-   <script  src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 </head>
 
@@ -43,20 +45,28 @@
             </svg>
 
          </div>
-         <div class="header__cart"><a href="#popup-cart"><svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="36px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></a></div>
+         <div class="header__cart" id="checkout"><a href="#popup-cart"><svg xmlns="http://www.w3.org/2000/svg"
+                  height="36px" viewBox="0 0 24 24" width="36px" fill="#000000">
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path
+                     d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+               </svg></a></div>
          <div id="popup-cart" class="popup-cart">
+           
             <div class="popup-cart__body">
-                  <a href="#header" class="popup-cart__close">X</a>
-                  <ul class="popup-cart__content">
-                     
-                  </ul>
-                  <div class="popup-cart__total">
-                     <p class="popup-cart__count">Разом: <span>1 товар</span></p>
-                     <p class="popup-cart__sum">На суму: <span>5 грн</span></p>
-                  </div>
-                  <div class="popup-cart__btn"><button>Оформлення замовлення</button></div>
+               
+               <div id="cart_content"  class="popup-cart__content"></div>
+               <div class="popup-cart__total">
+                  <p class="popup-cart__count">Разом: <span></span></p>
+                  <p class="popup-cart__sum">На суму: <span></span></p>
+               </div>
+
+               <div class="popup-cart__btn">
+                  <button id="clear_cart">Очистить корзину</button>
+                  <button>Оформлення замовлення</button></div>
             </div>
          </div>
+         
       </div>
    </header>
    <main>
@@ -75,19 +85,19 @@
          <div class="advances__wrapper">
             <ul class="advances__body">
                <li>
-                  <img src="/img/Shipping.png" alt="">
+                  <img src="../img/Shipping.png" alt="">
                   <h4>Free Shipping</h4>
                </li>
                <li>
-                  <img src="/img/Awarded.png" alt="">
+                  <img src="../img/Awarded.png" alt="">
                   <h4>Awarded Product Design</h4>
                </li>
                <li>
-                  <img src="/img/Ecofriendly.png" alt="">
+                  <img src="../img/Ecofriendly.png" alt="">
                   <h4>Ecofriendly Approach</h4>
                </li>
                <li>
-                  <img src="/img/Crafted.png" alt="">
+                  <img src="../img/Crafted.png" alt="">
                   <h4>Crafted in Spain</h4>
                </li>
             </ul>
@@ -103,8 +113,9 @@
       </section>
       <section class="block-product">
          <div class="block-product__wrapper">
-            
+
          </div>
+        
       </section>
       <section class="slider-picture">
          <div class="slider-img swiper">
@@ -117,11 +128,13 @@
                </div>
                <div class="slider-img__slide swiper-slide ">
                   <div class="slider-img__img"><img src="img/linda.m.karlsen.png" alt=""></div>
-                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>linda.m.karlsen</span> </div>
+                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>linda.m.karlsen</span>
+                  </div>
                </div>
                <div class="slider-img__slide swiper-slide ">
                   <div class="slider-img__img"><img src="img/martagtarrio_.png" alt=""></div>
-                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>martagtarrio_</span> </div>
+                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>martagtarrio_</span>
+                  </div>
                </div>
                <div class="slider-img__slide swiper-slide ">
                   <div class="slider-img__img"><img src="img/paula.rl.png" alt=""></div>
@@ -129,11 +142,13 @@
                </div>
                <div class="slider-img__slide swiper-slide ">
                   <div class="slider-img__img"><img src="img/linda.m.karlsen.png" alt=""></div>
-                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>linda.m.karlsen</span> </div>
+                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>linda.m.karlsen</span>
+                  </div>
                </div>
                <div class="slider-img__slide swiper-slide ">
                   <div class="slider-img__img"><img src="img/martagtarrio_.png" alt=""></div>
-                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>martagtarrio_</span> </div>
+                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>martagtarrio_</span>
+                  </div>
                </div>
                <div class="slider-img__slide swiper-slide ">
                   <div class="slider-img__img"><img src="img/paula.rl.png" alt=""></div>
@@ -141,16 +156,18 @@
                </div>
                <div class="slider-img__slide swiper-slide ">
                   <div class="slider-img__img"><img src="img/linda.m.karlsen.png" alt=""></div>
-                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>linda.m.karlsen</span> </div>
+                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>linda.m.karlsen</span>
+                  </div>
                </div>
                <div class="slider-img__slide swiper-slide ">
                   <div class="slider-img__img"><img src="img/martagtarrio_.png" alt=""></div>
-                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>martagtarrio_</span> </div>
+                  <div class="slider-img__instagram"><img src="img/instagram.svg" alt=""> <span>martagtarrio_</span>
+                  </div>
                </div>
             </div>
             <div class="swiper-pagination"></div>
          </div>
-         
+
       </section>
       <section class="quotes swiper">
          <div class="quotes__wrapper swiper-wrapper">
@@ -159,56 +176,60 @@
                   <p>"The team from Woodendot has displayed utmost professionalism from order to deliver and
                      customer support. We placed an order to the UK and would definitely recommend friends to
                      order from Woodendot!"</p>
-   
+
                   <p>R. Aoun, United Kingdom</p>
                </div>
             </div>
             <div class="quotes__slide swiper-slide">
                <div class="quotes__slide-wrap">
                   <p>"Great eco-friendly product to liven up any home!"</p>
-   
+
                   <p>M. Bowers, United Kingdom</p>
                </div>
             </div>
             <div class="quotes__slide swiper-slide">
                <div class="quotes__slide-wrap">
-                  <p>"The team from Woodendot has displayed utmost professionalism from order to deliver and customer support. We placed an order to the UK and would definitely recommend friends to order from Woodendot!"</p>
-   
+                  <p>"The team from Woodendot has displayed utmost professionalism from order to deliver and customer
+                     support. We placed an order to the UK and would definitely recommend friends to order from
+                     Woodendot!"</p>
+
                   <p>R. Aoun, United Kingdom</p>
                </div>
             </div>
             <div class="quotes__slide swiper-slide">
                <div class="quotes__slide-wrap">
                   <p>"Beautiful product, easy process, quick delivery and excellent customer service!"</p>
-   
+
                   <p>R. Meijer, Netherlands</p>
                </div>
             </div>
             <div class="quotes__slide swiper-slide">
                <div class="quotes__slide-wrap">
                   <p>"Fantastic quality product and craftmanship. Looks super stylish."</p>
-   
+
                   <p>J. Hughes, United Kingdom.</p>
                </div>
             </div>
             <div class="quotes__slide swiper-slide">
                <div class="quotes__slide-wrap">
                   <p>"Fantastic quality product and craftmanship. Looks super stylish."</p>
-   
+
                   <p>J. Hughes, United Kingdom.</p>
                </div>
             </div>
             <div class="quotes__slide swiper-slide">
                <div class="quotes__slide-wrap">
                   <p>"Love the design, the variety of possible combinations, and the one I chose, it’s “superb” !"</p>
-   
+
                   <p>A. de Vigan – Allard, France</p>
                </div>
             </div>
             <div class="quotes__slide swiper-slide">
                <div class="quotes__slide-wrap">
-                  <p>"The perfect solution that looks beautiful and modern, sustainable and well-crafted, playful and modular, high quality and durable, and finally with the benefit of thoughtfully integrated storage. These were the only tables that excited us and met all those criteria."</p>
-   
+                  <p>"The perfect solution that looks beautiful and modern, sustainable and well-crafted, playful and
+                     modular, high quality and durable, and finally with the benefit of thoughtfully integrated storage.
+                     These were the only tables that excited us and met all those criteria."</p>
+
                   <p>M. Chalabi, United States.</p>
                </div>
             </div>
@@ -310,23 +331,23 @@
          </div>
       </div>
    </footer>
-<script>
-   $(document).ready(function(){
-      $(".block-link h2").click(function (event) {
-         if($(".footer__left-block").hasClass("one")){
-            $(".block-link h2").not($(this)).removeClass("active");
-            $(".block-link__list-link").not($(this).next()).slideUp(300);
-         }
-         $(this).toggleClass('active').next().slideToggle(300);
-      })
-   });
-</script>
+   <script>
+      $(document).ready(function () {
+         $(".block-link h2").click(function (event) {
+            if ($(".footer__left-block").hasClass("one")) {
+               $(".block-link h2").not($(this)).removeClass("active");
+               $(".block-link__list-link").not($(this).next()).slideUp(300);
+            }
+            $(this).toggleClass('active').next().slideToggle(300);
+         })
+      });
+   </script>
 
 
    <script>
       //Бургер меню
       const menuBurger = document.querySelector('.header__burger');
-      if(menuBurger){
+      if (menuBurger) {
          const hederNav = document.querySelector('.header__nav');
          menuBurger.addEventListener("click", function (e) {
             hederNav.classList.toggle('active');
@@ -337,79 +358,91 @@
 
       //Анимация header
       const animItems = document.querySelectorAll('._anim-items');
-     window.addEventListener('scroll', animOnScroll);
-   function animOnScroll() {
-      for (let i = 0; i < animItems.length; i++) {
-         const animItem = animItems[i];
-         const animItemHeight = animItem.offsetHeight;
-         const animItemOffset = offset(animItem).top;
-         const animStart = 4;
-         let animItemPoint = window.innerHeight - animItemHeight / animStart;
-         if (animItemHeight > window.innerHeight) {
-            animItemPoint = window.innerHeight - window.innerHeight / animStart;
-         }
-         if ((scrollY > animItemOffset - animItemPoint) && scrollY < (animItemOffset + animItemHeight)) {
-            animItem.classList.add('_active');
-         } if (animItemOffset === 0) {
-            animItem.classList.remove('_active');
+      window.addEventListener('scroll', animOnScroll);
+      function animOnScroll() {
+         for (let i = 0; i < animItems.length; i++) {
+            const animItem = animItems[i];
+            const animItemHeight = animItem.offsetHeight;
+            const animItemOffset = offset(animItem).top;
+            const animStart = 4;
+            let animItemPoint = window.innerHeight - animItemHeight / animStart;
+            if (animItemHeight > window.innerHeight) {
+               animItemPoint = window.innerHeight - window.innerHeight / animStart;
+            }
+            if ((scrollY > animItemOffset - animItemPoint) && scrollY < (animItemOffset + animItemHeight)) {
+               animItem.classList.add('_active');
+            } if (animItemOffset === 0) {
+               animItem.classList.remove('_active');
+            }
          }
       }
-   }
-   function offset(el) {
-      const rect = el.getBoundingClientRect();
-      scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-      scrollTop = window.scrollY || document.documentElement.scrollTop;
-      return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
-   }
+      function offset(el) {
+         const rect = el.getBoundingClientRect();
+         scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+         scrollTop = window.scrollY || document.documentElement.scrollTop;
+         return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+      }
 
-   // слайдер цитат
+      // слайдер цитат
 
-  new Swiper('.quotes', {
-    pagination:{
-      el: '.swiper-pagination',
-      clickable: true,
+      new Swiper('.quotes', {
+         pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+
+         },
+         keyboard: {
+            enabled: true,
+         },
+         loop: true,
+         autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+         },
+         speed: 1000,
+      });
+
+      //слайдер изображений 
+      new Swiper('.slider-img', {
+         pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+         },
+         slidesPerView: 3,
+         spaceBetween: 10,
+         keyboard: {
+            enabled: true,
+         },
+         loop: true,
+         autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+         },
+         breakpoints: {
+            320: {
+               slidesPerView: 1,
+            },
+            480: {
+               slidesPerView: 2,
+            },
+            992: {
+               slidesPerView: 3,
+            }
+         },
+         speed: 1500,
+      });
+   </script>
+   <script>
+      document.querySelector('.header__cart').addEventListener('click', function(e){
+         document.querySelector('.popup-cart').classList.toggle('open');
+      });
+      document.querySelector('footer').addEventListener('click', function(e){
+         document.querySelector('.popup-cart').classList.remove('open');
+      });
+      document.querySelector('main').addEventListener('click', function(e){
+         document.querySelector('.popup-cart').classList.remove('open');
+      });
       
-    },
-    keyboard:{
-      enabled: true,
-    },
-    loop: true,
-    autoplay:{
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    speed: 1000,
-  });
-
-//слайдер изображений 
-new Swiper('.slider-img', {
-  pagination:{
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  slidesPerView: 3,
-  spaceBetween: 10,
-  keyboard:{
-    enabled: true,
-  },
-  loop: true,
-  autoplay:{
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  breakpoints:{
-   320:{
-      slidesPerView: 1,
-   },
-   480: {
-      slidesPerView: 2,
-   },
-   992: {
-      slidesPerView: 3,
-   }
-  },
-  speed: 1500,
-});
    </script>
 </body>
 

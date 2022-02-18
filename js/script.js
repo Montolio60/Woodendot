@@ -1,91 +1,122 @@
-let products = [
-   {
-      id: 10001,
-      name: "Cloe",
-      subName: "Modular Storage System",
-      price: 1.176,
-      description: "An expansive way to furnish your space exactly how you need it and like it. Transform it in exactly what you need like a bookshelf, tv stand or show rack, you pick.",
-      img: "img/cloe.png"
-   },
-   {
-      id: 10002,
-      name: "Pelican",
-      subName: "Modular bedside table & shelf",
-      price: 89,
-      description: "Store or exhibit your favorite objects in the entrance hall, modern hallways, living rooms and bedrooms with a decorative and minimalist touch.",
-      img: "img/Pelican.png"
-   },
-   {
-      id: 10003,
-      name: "Alada",
-      subName: "Floating folding desk",
-      price: 534,
-      description: "A timeless and discreet folding desk that seamlessly transforms into a decorative shelf in seconds.",
-      img: "img/Alada.png"
-   },
-   {
-      id: 10004,
-      name: "Alba Collection",
-      subName: "Modular bedside table & shelf",
-      price: 272,
-      description: "A versatile and modular piece with a sculptural touch that can be used as a wall shelf or as a bedside table with concealed storage.",
-      img: "img/AlbaCollection.png"
-   },
-   {
-      id: 10005,
-      name: "Batea Collection",
-      subName: "Tables with storage & tray tables",
-      price: 272,
-      description: "Composed of clean and rounded lines, the Batea Collection includes unique tables with extra functionality like a removable tray, and hidden storage.",
-      img: "img/BateaCollection.png"
+let d = document,
+   itemBox = d.querySelectorAll('.product__text'), // блок каждого товара
+   cartCont = d.getElementById('cart_content'); // блок вывода данных корзины
+
+// Получаем данные из LocalStorage
+function getCartData() {
+   return JSON.parse(localStorage.getItem('cart'));
+}
+// Записываем данные в LocalStorage
+function setCartData(o) {
+   localStorage.setItem('cart', JSON.stringify(o));
+   return false;
+}
+// Добавляем товар в корзину
+function addToCart(e) {
+   this.disabled = true; // блокируем кнопку на время операции с корзиной
+
+   var cartData = getCartData() || {}, // получаем данные корзины или создаём новый объект, если данных еще нет
+      parentBox = this.parentNode, // родительский элемент кнопки "Добавить в корзину"
+      parentWrapper = parentBox.parentNode,
+      itemId = this.getAttribute('data-id'), // ID товара
+      itemTitle = parentBox.querySelector('.product__title').innerHTML, // название товара
+      itemPrice = parentBox.querySelector('.product__price span').innerHTML.match(/\d/g).join(''), // стоимость товара
+      itemImg = parentWrapper.querySelector('.product__img img').getAttribute('src');
+
+   console.log(itemImg);
+   if (cartData.hasOwnProperty(itemId)) { // если такой товар уже в корзине, то добавляем +1 к его количеству
+      cartData[itemId][2] += 1;
+   } else { // если товара в корзине еще нет, то добавляем в объект
+      cartData[itemId] = [itemTitle, itemPrice, 1, itemImg];
    }
-]
+   if (!setCartData(cartData)) { // Обновляем данные в LocalStorage
+      this.disabled = false; // разблокируем кнопку после обновления LS
+   }
+   return false;
+}
+// Устанавливаем обработчик события на каждую кнопку "Добавить в корзину"
+for (var i = 0; i < itemBox.length; i++) {
+   itemBox[i].querySelector('.product__btn').addEventListener('click', addToCart);
+}
+// Открываем корзину со списком добавленных товаров
+function openCart(e) {
+   var cartData = getCartData(), // вытаскиваем все данные корзины
+      totalItems = '';
+   // если что-то в корзине уже есть, начинаем формировать данные для вывода
+   if (cartData !== null) {
+      totalItems = '<ul class="popup-cart__list-cart">';
+      for (var items in cartData) {
+         let totalPriceGoods = cartData[items][1] * cartData[items][2];
+         totalItems += '<li class="popup-cart__list-li">';
+         totalItems += ' <div class="popup-cart__img-goods"><img src="' + cartData[items][3] + '" alt=""></div>';
+         totalItems += '<div class="popup-cart__text-goods"><h5>' + cartData[items][0] + '</h5><p>Ціна - ' + cartData[items][1] + '/шт</p></div>';
+         totalItems += '<div class="popup-cart__price-goods">' + totalPriceGoods + '$</div>';
+         totalItems += '<a href="" class="popup-cart__delet">X</a>';
+         console.log()
+         //<div class="popup-cart__price-goods">1.176 грн</div>
+
+         totalItems += '</li>';
+      }
+      totalItems += '</ul>';
+      cartCont.innerHTML = totalItems;
+   } else {
+      // если в корзине пусто, то сигнализируем об этом
+      cartCont.innerText = 'В корзине пусто!';
+   }
+   document.querySelector('.popup-cart__count span').innerHTML = CountCart() + " товар";
+   document.querySelector('.popup-cart__sum span').innerHTML = TotalPrice() + " $";
+   return false;
+}
+function CountCart() {
+   var cartData = getCartData();
+   let countGoods = 0;
+   if (cartData !== null) {
+      for (var items in cartData) {
+         countGoods += cartData[items][2];
+      }
+   }
+   return countGoods;
+}
+function TotalPrice() {
+   var cartData = getCartData();
+   let Price = 0;
+   if (cartData !== null) {
+      for (var items in cartData) {
+         Price += cartData[items][1] * cartData[items][2];
+      }
+   }
+   return Price
+}
+
+/* Открыть корзину */
+d.getElementById('checkout').addEventListener('click', openCart);
+/* Очистить корзину */
+d.getElementById('clear_cart').addEventListener('click', function (e) {
+   localStorage.removeItem('cart');
+   cartCont.innerHTML = 'Корзина очишена.';
+   document.querySelector('.popup-cart__count span').innerHTML = 0 + " товар";
+   document.querySelector('.popup-cart__sum span').innerHTML = 0 + " $";
+});
+
+
+
+/*<ul class="popup-cart__list-cart">
+                        <li>
+                           <div class="popup-cart__img-goods"><img src="img/cloe.png" alt=""></div>
+                           <div class="popup-cart__text-goods"><h5>Cloe</h5><p>Ціна - 1.176/шт</p></div>
+                           <form action="" class="counter">
+                              <button name="decrease">-</button>
+                              <input name="value" type="number" value="5"  style="text-align: center;">
+                              <button name="increase">+</button>
+                           </form>
+                           <div class="popup-cart__price-goods">1.176 грн</div>
+                           <a href="" class="popup-cart__delet">X</a>
+                        </li>
+                     </ul> */
+/*
 
 //отрисовка продуктов 
 
-function renderProduct() {
-   const mainBlock = document.querySelector('.block-product__wrapper');
-   products.forEach(goods => {
-      const product = document.createElement('div');
-      const productWrapper = document.createElement('div');
-      const productText = document.createElement('div');
-      const productImg = document.createElement('div');
-      const picture = document.createElement('img');
-      const productTitle = document.createElement('h3');
-      const productSubtitle = document.createElement('h5');
-      const productPrice = document.createElement('div');
-      const paragraph = document.createElement('p');
-      const productBtn = document.createElement('div');
-      productBtn.innerHTML = `<button class = "product__btn" data-id = "` + goods.id + `">Shop now</button>`;
-
-      product.className = "product";
-      productWrapper.className = "product__wrapper";
-      productText.className = "product__text";
-      productImg.className = "product__img";
-      productTitle.className = "product__title";
-      productSubtitle.className = "product__subtitle";
-      productPrice.className = "product__price";
-
-      picture.src = goods.img;
-      productTitle.innerText = goods.name;
-      productSubtitle.innerText = goods.subName;
-      productPrice.innerHTML = "From <span> $" + goods.price + "</span>";
-      paragraph.innerText = goods.description;
-
-
-      product.append(productWrapper);
-      productWrapper.append(productText, productImg)
-      productImg.append(picture);
-      productText.append(productTitle, productSubtitle, productPrice, paragraph, productBtn)
-
-      mainBlock.append(product);
-   });
-
-
-   return mainBlock;
-};
-
-renderProduct();
 
 // Корзина 
 
@@ -177,19 +208,7 @@ const clearCart = () => {
 }
 
 
-/*<ul class="popup-cart__list-cart">
-                        <li>
-                           <div class="popup-cart__img-goods"><img src="img/cloe.png" alt=""></div>
-                           <div class="popup-cart__text-goods"><h5>Cloe</h5><p>Ціна - 1.176/шт</p></div>
-                           <form action="" class="counter">
-                              <button name="decrease">-</button>
-                              <input name="value" type="number" value="5"  style="text-align: center;">
-                              <button name="increase">+</button>
-                           </form>
-                           <div class="popup-cart__price-goods">1.176 грн</div>
-                           <a href="" class="popup-cart__delet">X</a>
-                        </li>
-                     </ul> */
+*/
 
 //Количество товаров в корзине 
 
